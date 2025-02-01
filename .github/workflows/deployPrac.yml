@@ -48,9 +48,9 @@ jobs:
         run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.tar.gz s3://test-server-2/$GITHUB_SHA.tar.gz
 
       - name: code deploy를 이용해 EC2에 프로젝트 코드 배포
-        run: aws deploy create-deployment # 배포를 생성해서 code deploy에 저장하는 명령어
-            --application-name test-server # test-server에 배포를 생성한다
-            --deployment-config-name CodeDeployDefault.AllAtOnce # instance들을 어떻게 배포할건지? 지금은 한번에 배포하기로 설정
-            --deployment-group-name test # 배포 그룹 이름 "test"
-            --s3-location bucket=test-server-2,bundleType=tgz,key=$GITHUB_SHA.tar.gz #key=$GITHUB_SHA.tar.gz는 S3에 저장된 파일 이름이다
+        run: aws deploy create-deployment 
+            --application-name test-server
+            --deployment-config-name CodeDeployDefault.AllAtOnce 
+            --deployment-group-name test
+            --s3-location bucket=test-server-2,bundleType=tgz,key=$GITHUB_SHA.tar.gz
 
