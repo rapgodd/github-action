@@ -1,14 +1,27 @@
+#Workflow 이름
+#Workflow : 하나의 yml파일
 name: Github Action Test
 
+#Event : 언제 github action이 동작할지 정의
+#github action : 명령 로직을 수행할 수 있는 컴퓨터
 on:
   push:
     branches:
       - main
 
+#Job : Event가 일어났을때 수행하는 큰 작업 EX) 빌드, 배포
 jobs:
   My-Deploy-Job:
     runs-on: ubuntu-latest
 
+#Steps : 큰 작업을 수행하기 위해 진행하는 각 단계들
     steps:
       - name: Hello world
         run: echo "Hello World"
+
+      #$GITHUB_SHA : 현재 커밋의 식별값
+      #$GITHUB_REPOSITORY : 현재 workflow가 동작하는 곳의 리포지토리
+      - name: Github Actions 자체에 저장되어 있는 변수 사용해보기
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
