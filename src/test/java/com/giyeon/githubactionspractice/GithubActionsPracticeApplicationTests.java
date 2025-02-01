@@ -7,8 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 class GithubActionsPracticeApplicationTests {
 
     @Test
-    void contextLoads() {
-        throw new RuntimeException();
-    }
+    void contextLoads() {}
 
 }
